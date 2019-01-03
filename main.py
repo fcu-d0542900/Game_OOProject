@@ -41,8 +41,8 @@ class Game:
                 Wall(self, tile_object.x, tile_object.y,
                          tile_object.width, tile_object.height)
             if tile_object.name == 'treasure':
-                x, y = randint(30,1570), randint(30,1570)
-                self.treasure = Treasure(self, x, y, tile_object.width, tile_object.height)
+                #x, y = randint(30,1570), randint(30,1570)
+                self.treasure = Treasure(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
             if tile_object.name == 'zombie':
                 Zombie(self,tile_object.x, tile_object.y)
         self.camera = Camera(self.map.width, self.map.height)

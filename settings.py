@@ -11,7 +11,7 @@ TITLE = "物件導向軟體工程專題"
 TILESIZE = 64
 GAMETIME = 60
 #MAP = 'test.tmx'
-MAP = 'map.tmx'
+MAP = 'Maze2.tmx'
 
 
 # Player settings
