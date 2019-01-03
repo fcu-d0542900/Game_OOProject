@@ -15,7 +15,7 @@ class Game:
         self.clock = pg.time.Clock()
         self.load_data()
 
-    def load_data(self):
+    def load_data(self):  #載入所有圖片
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'img')
         self.map = TiledMap(MAP)  #地圖
@@ -26,7 +26,7 @@ class Game:
         self.bullet_img = pg.image.load(path.join(img_folder, BULLET_IMG)).convert_alpha()
         self.zombie_img = pg.image.load(path.join(img_folder, ZOMBIE_IMG)).convert_alpha()
 
-    def new(self):
+    def new(self):  #角色初始位置
         self.win = True
         self.treasures = pg.sprite.Group()
         self.walls = pg.sprite.Group()
@@ -44,12 +44,10 @@ class Game:
                 x, y = randint(30,1570), randint(30,1570)
                 self.treasure = Treasure(self, x, y, tile_object.width, tile_object.height)
             if tile_object.name == 'zombie':
-                x1, y1, x2, y2 = randint(30,1570), randint(30,1570), randint(30,1570), randint(30,1570)
-                Zombie(self, x1, y1)
-                Zombie(self, x2, y2)
+                Zombie(self,tile_object.x, tile_object.y)
         self.camera = Camera(self.map.width, self.map.height)
 
-    def run(self):
+    def run(self):  #時間
         self.playing = True
         start_ticks = pg.time.get_ticks()
         while self.playing:
@@ -67,7 +65,7 @@ class Game:
         pg.quit()
         sys.exit()
 
-    def update(self):
+    def update(self):  #更新角色
         self.treasure.update()
         self.player.update()
         for bullet in self.bullets:
