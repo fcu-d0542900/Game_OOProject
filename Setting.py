@@ -13,11 +13,11 @@ class Setting:
         self.FPS = 60
         self.TILESIZE = 64
         self.GAMETIME = 60
-        self.TITLE = ''
-        self.MAP = ''
+        self.TITLE = 'Maze'
+        self.MAP = 'Maze1.tmx'
         
         # Player settings
-        self.PLAYER_IMG = ''
+        self.PLAYER_IMG = 'manBlue_gun.png'
         self.PLAYER_SPEED = 3
         self.PLAYER_HIT_RECT = pg.Rect(0, 0, 35, 35)
         self.PLAYER_HEALTH = 1000
@@ -31,13 +31,13 @@ class Setting:
         self.DAMAGE = 20
         
         # Mob settings
-        self.ZOMBIE_IMG = ''
+        self.ZOMBIE_IMG = 'monster.png'
         self.ZOMBIE_SPEED = 1
         self.ZOMBIE_HIT_RECT = pg.Rect(0, 0, 30, 30)
         self.ZOMBIE_HEALTH = 100
         
         # Treasure
-        self.TREASURE_IMG = ''
+        self.TREASURE_IMG = 'treasure.png'
     
     def setPlayer(self):
         pass
