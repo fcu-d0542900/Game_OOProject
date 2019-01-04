@@ -1,61 +1,14 @@
-import pygame as pg
-vec = pg.math.Vector2
-
-'''參數設定'''
-'''
-# game settings
-WIDTH = 64 * 20  
-HEIGHT = 64 * 10 
-FPS = 60
-TITLE = "物件導向軟體工程專題"
-TILESIZE = 64
-GAMETIME = 60
-#MAP = 'test.tmx'
-MAP = 'Maze2.tmx'
 
 
-# Player settings
-PLAYER_IMG = 'manBlue_gun.png'
-PLAYER_SPEED = 3
-PLAYER_HIT_RECT = pg.Rect(0, 0, 35, 35)
-PLAYER_HEALTH = 1000
+class Component():
+    def op(self):
+        pass
+      
 
-# Weapon settings
-BARREL_OFFSET = vec(30, 10)
-BULLET_IMG = 'bullet.png'
-BULLET_SPEED = 1000
-BULLET_RATE = 150
-GUN_SPREAD = 5
-DAMAGE = 20
+        
+        
 
-# Mob settings
-ZOMBIE_IMG = 'monster.png'
-ZOMBIE_SPEED = 1
-ZOMBIE_HIT_RECT = pg.Rect(0, 0, 30, 30)
-ZOMBIE_HEALTH = 100
 
-# Treasure
-TREASURE_IMG = 'treasure.png'
-'''
 
-class Setting:
 
-    def __init__(self):	
-		self.WIDTH = 64 * 20  
-		self.HEIGHT = 64 * 10 
-		self.FPS = 60
-		self.TILESIZE = 64
-		self.GAMETIME = 60
-	
-	@abstractmethod
-	def setPlayer(self):
-		pass
-
-	@abstractmethod
-	def setTitle(self):
-		pass
-	
-	@abstractmethod
-	def setTreasure(self):
-		pass
 			
