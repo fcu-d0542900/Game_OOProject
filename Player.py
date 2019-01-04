@@ -7,8 +7,9 @@ Created on Fri Jan  4 21:13:10 2019
 
 import pygame as pg
 
-class Player(pg.sprite.Sprite):
-    def __init__(self, game, x, y):
+class Player(pg.sprite.Sprite,Role):
+    def __init__(self, game, x, y,c):
+        Role.__init__(self,c)
         pg.sprite.Sprite.__init__(self)
         self.game = game
         self.image = game.player_img
@@ -21,6 +22,11 @@ class Player(pg.sprite.Sprite):
         self.rot = 0
         self.health = PLAYER_HEALTH
         self.last_shot = 0
+    
+    def op(self):
+        super.op()
+        update()
+
         
     def get_mouse(self):
         self.mouse_pos = pg.mouse.get_pos()

@@ -5,9 +5,15 @@ Created on Fri Jan  4 20:59:31 2019
 @author: User
 """
 
-class Role:
+from Component import *
+
+class Role(Component):
+    
+    def __init__(self,c):
+        self.c=c
+        
     def op(self):
-        pass
+        c.op()
 
         
       

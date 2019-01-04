@@ -7,9 +7,10 @@ Created on Fri Jan  4 21:15:33 2019
 
 import pygame as pg
 
-class Zombie:
+class Zombie(pg.sprite.Sprite,Role):
     
-    def __init__(self, game, x, y):
+    def __init__(self, game, x, y,c):
+        Role.__init__(self,c)
         self.groups = game.zombies
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
@@ -23,7 +24,11 @@ class Zombie:
         self.health = ZOMBIE_HEALTH
         self.vel = vec(0, 0)
         self.acc = vec(0, 0)
-
+        
+    def op(self):
+        super.op()
+        update()        
+        
     def update(self):
         self.rot = (self.game.player.pos - self.pos).angle_to(vec(1, 0))
         #self.image = pg.transform.rotate(self.game.zombie_img, self.rot)
