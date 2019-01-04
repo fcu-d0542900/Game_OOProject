@@ -7,7 +7,7 @@ Created on Fri Jan  4 21:26:59 2019
 
 import pygame as pg
 
-class Bullet(pg.sprite.Sprite):
+class Bullet(pg.sprite.Sprite,Setting):
     
     def __init__(self, game, pos, dir):
         
@@ -22,10 +22,7 @@ class Bullet(pg.sprite.Sprite):
         self.vel = dir.rotate(spread) * BULLET_SPEED
         self.spawn_time = pg.time.get_ticks()
         
-    def op(self):
-        super.op()
-        update()
-
+        
     def update(self):
         self.pos += self.vel * self.game.dt
         self.rect.center = self.pos
