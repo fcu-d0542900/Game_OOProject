@@ -6,8 +6,8 @@ from RPGGame import *
 
 
 if __name__ == '__main__':  #遊戲執行
-    #g = MazeGame()
-    g = RPGGame()
+    g = MazeGame()
+    #g = RPGGame()
     while True:
         g.new()  #遊戲初始
         pg.mixer.music.load('music/faded.mp3')

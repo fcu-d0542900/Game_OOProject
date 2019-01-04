@@ -28,8 +28,6 @@ class AbstractGame:
     def quit(self):
         pg.quit()
         sys.exit()
-    
-        
         
     def events(self):
         for event in pg.event.get():
@@ -133,7 +131,7 @@ class Setting:
         
         # Weapon settings
         self.BARREL_OFFSET = vec(30, 10)
-        self.BULLET_IMG = 'bullet.png'
+        self.BULLET_IMG = 'nobullet.png'
         self.BULLET_SPEED = 1000
         self.BULLET_RATE = 150
         self.GUN_SPREAD = 5

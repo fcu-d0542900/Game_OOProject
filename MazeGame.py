@@ -25,6 +25,7 @@ class MazeGame(AbstractGame):
         self.map_rect = self.map_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, self.setting.PLAYER_IMG)).convert_alpha()
         self.treasure_img = pg.image.load(path.join(img_folder, self.setting.TREASURE_IMG)).convert_alpha()
+        self.bullet_img = pg.image.load(path.join(img_folder, self.setting.BULLET_IMG)).convert_alpha()
     
     def setMaze(self):
         self.setting.MAP='Maze2.tmx' 
