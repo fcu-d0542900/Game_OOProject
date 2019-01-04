@@ -28,12 +28,9 @@ class AbstractGame:
     def quit(self):
         pg.quit()
         sys.exit()
-    
-        
-        
+       
     def events(self):
         for event in pg.event.get():
-            print(event)
             if event.type == pg.QUIT:
                 self.quit()
             if event.type == pg.KEYDOWN:
