@@ -9,7 +9,7 @@ import pygame as pg
 
 class Zombie(pg.sprite.Sprite):
     
-    def __init__(self, game, x, y,Component):
+    def __init__(self, game, x, y):
 
         self.groups = game.zombies
         pg.sprite.Sprite.__init__(self, self.groups)

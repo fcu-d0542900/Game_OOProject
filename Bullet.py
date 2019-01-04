@@ -9,7 +9,7 @@ import pygame as pg
 
 class Bullet(pg.sprite.Sprite):
     
-    def __init__(self, game, pos, dir,Component):
+    def __init__(self, game, pos, dir):
         
         self.groups = game.bullets
         pg.sprite.Sprite.__init__(self, self.groups)
