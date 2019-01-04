@@ -11,8 +11,8 @@ if __name__ == '__main__':  #遊戲執行
     while True:
         g.new()  #遊戲初始
         pg.mixer.music.load('music/faded.mp3')
-        #pg.mixer.music.play(0)
+        pg.mixer.music.play(0)
         g.run()  #遊戲運作
-        #pg.mixer.music.stop()
+        pg.mixer.music.stop()
         g.gg()  #遊戲結束
         

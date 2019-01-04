@@ -32,13 +32,15 @@ class MazeGame(AbstractGame):
         self.setting.MAP='Maze2.tmx' 
         self.setting.TITLE = 'Maze Game'
         self.setting.PLAYER_IMG = 'ghost.png'
-        self.BULLET_IMG = 'nobullet.png'
+        self.setting.TREASURE_IMG = 'treasure.png'
+        self.setting.BULLET_IMG = 'nobullet.png'
 
     def new(self):  #角色初始位置
         self.win = True
         self.treasures = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.zombies = pg.sprite.Group()
+        self.bullets = pg.sprite.Group()
         self.camera.setCamera(self.map.width, self.map.height)
 
         for tile_object in self.map.tmxdata.objects:

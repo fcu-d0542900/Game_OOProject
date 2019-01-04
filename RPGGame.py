@@ -13,14 +13,6 @@ from Structure import *
 class RPGGame(AbstractGame):
     
     def __init__(self):
-        # Weapon settings
-        self.BARREL_OFFSET = vec(30, 10)
-        self.BULLET_IMG = 'bullet.png'
-        self.BULLET_SPEED = 1000
-        self.BULLET_RATE = 150
-        self.GUN_SPREAD = 5
-        self.DAMAGE = 20
-        self.last_shot = 0
         AbstractGame.__init__(self)
     
     def load_data(self):  #載入所有圖片
@@ -69,18 +61,8 @@ class RPGGame(AbstractGame):
             self.update()
             self.draw(time_left)
             
-    def mouse(self):
-       # self.mouse_pos = pg.mouse.get_pos()
-        if pg.mouse.get_pressed()[0]:
-            now = pg.time.get_ticks()
-            if now - self.last_shot > self.BULLET_RATE:
-                self.last_shot = now
-                dir = vec(1, 0).rotate(-self.rot)
-                pos = self.pos + self.BARREL_OFFSET.rotate(-self.rot)
-                Bullet(self.game, pos, dir)
 
     def update(self):  #更新角色
-        self.mouse()
         self.treasure.update()
         self.player.update()
         for bullet in self.bullets:
