@@ -33,7 +33,7 @@ class MazeGame(AbstractGame):
         self.setting.MAP='Maze2.tmx' 
         self.setting.TITLE = 'Maze Game'
         self.setting.PLAYER_IMG = 'ghost.png'
-        self.setting.TREASURE_IMG = 'treasure.png'
+        self.setting.TREASURE_IMG = 'door.png'
         self.setting.BULLET_IMG = 'nobullet.png'
 
     def new(self):  #角色初始位置

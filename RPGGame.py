@@ -33,7 +33,7 @@ class RPGGame(AbstractGame):
         self.setting.TITLE = 'RPG Game'
         self.setting.PLAYER_IMG = 'cyclops.png'
         self.setting.ZOMBIE_IMG = 'dragon.png'
-        self.setting.TREASURE_IMG = 'treasure.png'
+        self.setting.TREASURE_IMG = 'coins.png'
         self.setting.BULLET_IMG = 'bullet.png'
         
     def new(self):  #角色初始位置
