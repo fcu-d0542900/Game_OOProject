@@ -10,6 +10,7 @@ import sys
 from os import path
 from AbstractGame import * 
 from Player import * 
+from Wall import *
 from Treasure import * 
 from random import randint
 
