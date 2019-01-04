@@ -6,8 +6,9 @@ Created on Fri Jan  4 21:17:39 2019
 """
 
 import pygame as pg
+from Setting import *
 
-class Collide:
+class Collide(Setting):
     
     def collide_hit_rect(one, two):
         return one.hit_rect.colliderect(two.rect)
