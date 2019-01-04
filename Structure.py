@@ -28,12 +28,9 @@ class AbstractGame:
     def quit(self):
         pg.quit()
         sys.exit()
-    
-        
-        
+       
     def events(self):
         for event in pg.event.get():
-            print(event)
             if event.type == pg.QUIT:
                 self.quit()
             if event.type == pg.KEYDOWN:
@@ -299,8 +296,8 @@ class Zombie(pg.sprite.Sprite,Setting):
         self.acc = vec(0, 0)  
         
     def update(self):
-        self.rot = (self.game.player.pos - self.pos).angle_to(vec(1, 0))
-        #self.image = pg.transform.rotate(self.game.zombie_img, self.rot)
+        #self.rot = (self.game.player.pos - self.pos).angle_to(vec(1, 0))
+        self.image = pg.transform.rotate(self.game.zombie_img, self.rot)
         self.rect = self.image.get_rect()
         move = (self.game.player.pos - self.pos)
         move.x, move.y = self.ZOMBIE_SPEED *  move.x / math.sqrt(move.x ** 2 + move.y ** 2), self.ZOMBIE_SPEED * move.y / math.sqrt(move.x ** 2 + move.y ** 2)
