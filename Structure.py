@@ -28,6 +28,8 @@ class AbstractGame:
     def quit(self):
         pg.quit()
         sys.exit()
+    
+        
         
     def events(self):
         for event in pg.event.get():
@@ -131,7 +133,7 @@ class Setting:
         
         # Weapon settings
         self.BARREL_OFFSET = vec(30, 10)
-        self.BULLET_IMG = 'nobullet.png'
+        self.BULLET_IMG = 'bullet.png'
         self.BULLET_SPEED = 1000
         self.BULLET_RATE = 150
         self.GUN_SPREAD = 5
@@ -228,11 +230,16 @@ class Player(pg.sprite.Sprite,Setting):
         self.health = self.PLAYER_HEALTH
         self.last_shot = 0
     
- 
+        
     def get_mouse(self):
         self.mouse_pos = pg.mouse.get_pos()
-
-
+        if pg.mouse.get_pressed()[0]:
+            now = pg.time.get_ticks()
+            if now - self.last_shot > self.BULLET_RATE:
+                self.last_shot = now
+                dir = vec(1, 0).rotate(-self.rot)
+                pos = self.pos + self.BARREL_OFFSET.rotate(-self.rot)
+                Bullet(self.game, pos, dir)
 
     '''取得按下的按鍵, 並判斷移動方向'''
     def get_keys(self):
@@ -283,7 +290,6 @@ class Player(pg.sprite.Sprite,Setting):
         if self.health < self.PLAYER_HEALTH:
             pg.draw.rect(self.image, col, self.health_bar)
             
-        
             
 class Zombie(pg.sprite.Sprite,Setting):
     
@@ -319,11 +325,11 @@ class Zombie(pg.sprite.Sprite,Setting):
         self.rect.center = self.hit_rect.center
         self.COLLIDE.got_hit(self, self.game.bullets)
         if self.health <= 0:
-            #x, y = randint(30,1570), randint(30,1570)
-            #self.rect.center = (x,y)
-            #self.pos = vec(x, y)
-            #self.health = self.ZOMBIE_HEALTH
-            self.kill()
+            x, y = randint(30,1570), randint(30,1570)
+            self.rect.center = (x,y)
+            self.pos = vec(x, y)
+            self.health = self.ZOMBIE_HEALTH
+            #self.kill()
     
     def draw_health(self):
         if self.health > 60:
