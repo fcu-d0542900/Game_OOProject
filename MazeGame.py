@@ -8,15 +8,14 @@ Created on Fri Jan  4 21:45:07 2019
 import pygame as pg
 import sys
 from os import path
-from AbstractGame import * 
-from Player import * 
-from Wall import *
-from Treasure import * 
 from random import randint
-from Setting import *
+from Structure import *
 
 
 class MazeGame(AbstractGame):
+    
+    def __init__(self):
+        AbstractGame.__init__(self)
     
     def load_data(self):  #載入所有圖片
         game_folder = path.dirname(__file__)
@@ -73,7 +72,7 @@ class MazeGame(AbstractGame):
         pg.font.init()
         myfont = pg.font.SysFont('Comic Sans MS', 50)
         textsurface = myfont.render(str(int(time_left))+' sec', False, (255, 0, 0))
-        self.screen.blit(textsurface,(1000 ,HEIGHT/10))
+        self.screen.blit(textsurface,(1000 ,self.setting.HEIGHT/10))
 
         pg.display.flip()
 

@@ -1,7 +1,5 @@
 import pygame as pg
-import sys
 from os import path
-from random import randint
 from MazeGame import *
 
 
