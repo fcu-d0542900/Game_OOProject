@@ -88,14 +88,6 @@ class RPGGame(AbstractGame):
 
         pg.display.flip()
 
-    def events(self):
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                self.quit()
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_ESCAPE:
-                    self.quit()
-
     def gg(self):
         self.screen.fill((0,0,0))
         pg.font.init()
