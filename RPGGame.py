@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan  4 21:45:07 2019
+Created on Sat Jan  5 03:58:38 2019
 
 @author: YURU
 """
@@ -11,8 +11,7 @@ from os import path
 from random import randint
 from Structure import *
 
-
-class MazeGame(AbstractGame):
+class RPGGame(AbstractGame):
     
     def __init__(self):
         AbstractGame.__init__(self)
@@ -25,11 +24,14 @@ class MazeGame(AbstractGame):
         self.map_rect = self.map_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, self.setting.PLAYER_IMG)).convert_alpha()
         self.treasure_img = pg.image.load(path.join(img_folder, self.setting.TREASURE_IMG)).convert_alpha()
+        self.bullet_img = pg.image.load(path.join(img_folder, self.setting.BULLET_IMG)).convert_alpha()
+        self.zombie_img = pg.image.load(path.join(img_folder, self.setting.ZOMBIE_IMG)).convert_alpha()
 
     def new(self):  #角色初始位置
         self.win = True
         self.treasures = pg.sprite.Group()
         self.walls = pg.sprite.Group()
+        self.bullets = pg.sprite.Group()
         self.zombies = pg.sprite.Group()
         self.camera.setCamera(self.map.width, self.map.height)
 
@@ -38,9 +40,13 @@ class MazeGame(AbstractGame):
                 print(tile_object.x, tile_object.y)
                 self.player = Player(self, tile_object.x, tile_object.y)
             if tile_object.name == 'wall':
-                Wall(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
+                Wall(self, tile_object.x, tile_object.y,
+                         tile_object.width, tile_object.height)
             if tile_object.name == 'treasure':
-                self.treasure = Treasure(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
+                x, y = randint(30,1570), randint(30,1570)
+                self.treasure = Treasure(self, x, y, tile_object.width, tile_object.height)
+            if tile_object.name == 'zombie':
+                Zombie(self,tile_object.x, tile_object.y)
 
     def run(self):  #時間
         self.playing = True
@@ -51,7 +57,7 @@ class MazeGame(AbstractGame):
             if time_left <= 0:
                 self.win = False
                 break
-            self.dt = self.clock.tick(self.setting.FPS) / 1000.0  
+            self.dt = self.clock.tick(FPS) / 1000.0  
             self.events()
             self.update()
             self.draw(time_left)
@@ -59,12 +65,22 @@ class MazeGame(AbstractGame):
     def update(self):  #更新角色
         self.treasure.update()
         self.player.update()
+        for bullet in self.bullets:
+            bullet.update()
+        for zombie in self.zombies:
+            zombie.update()
         self.camera.update(self.player)
 
     def draw(self, time_left):
         self.screen.blit(self.map_img, self.camera.apply_rect(self.map_rect))
+        self.player.draw_health()
         self.screen.blit(self.player.image, self.camera.apply(self.player))
         self.screen.blit(self.treasure.image, self.camera.apply(self.treasure))
+        for bullet in self.bullets:
+            self.screen.blit(bullet.image, self.camera.apply(bullet))
+        for zombie in self.zombies:
+            zombie.draw_health()
+            self.screen.blit(zombie.image, self.camera.apply(zombie))
 
         pg.font.init()
         myfont = pg.font.SysFont('Comic Sans MS', 50)
@@ -101,3 +117,15 @@ class MazeGame(AbstractGame):
                     self.quit()
                 if event.type == pg.KEYUP:
                     waiting = False
+
+
+if __name__ == '__main__':  #遊戲執行
+    g = Game()
+    while True:
+        g.new()  #遊戲初始
+        pg.mixer.music.load('music/faded.mp3')
+        #pg.mixer.music.play(0)
+        g.run()  #遊戲運作
+        #pg.mixer.music.stop()
+        g.gg()  #遊戲結束
+        
