@@ -321,11 +321,11 @@ class Zombie(pg.sprite.Sprite,Setting):
         self.rect.center = self.hit_rect.center
         self.COLLIDE.got_hit(self, self.game.bullets)
         if self.health <= 0:
-            x, y = randint(30,1570), randint(30,1570)
-            self.rect.center = (x,y)
-            self.pos = vec(x, y)
-            self.health = self.ZOMBIE_HEALTH
-            #self.kill()
+            #x, y = randint(30,1570), randint(30,1570)
+            #self.rect.center = (x,y)
+            #self.pos = vec(x, y)
+            #self.health = self.ZOMBIE_HEALTH
+            self.kill()
     
     def draw_health(self):
         if self.health > 60:

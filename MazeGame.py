@@ -6,7 +6,6 @@ Created on Fri Jan  4 21:45:07 2019
 """
 
 import pygame as pg
-import sys
 from os import path
 from random import randint
 from Structure import *
