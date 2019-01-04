@@ -1,11 +1,14 @@
 import pygame as pg
 vec = pg.math.Vector2
 
+from Collide import *
+
 '''參數設定'''
 
 class Setting:
 
     def __init__(self):	
+        self.COLLIDE = Collide()
         
         # game settings
         self.WIDTH = 64 * 20  

@@ -16,7 +16,7 @@ class Collide(Setting):
     def got_hit(self,sprite, group):
         hits = pg.sprite.spritecollide(sprite,group,False,self.collide_hit_rect)
         if hits:
-           sprite.health -= DAMAGE
+           sprite.health -= self.DAMAGE
            if isinstance(hits[0],Bullet):
                hits[0].kill()
            if sprite.health<0 & isinstance(sprite,Player):
