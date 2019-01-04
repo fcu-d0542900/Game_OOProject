@@ -31,6 +31,7 @@ class MazeGame(AbstractGame):
         self.treasures = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.zombies = pg.sprite.Group()
+        self.bullets = pg.sprite.Group()
         self.camera.setCamera(self.map.width, self.map.height)
 
         for tile_object in self.map.tmxdata.objects:
@@ -73,13 +74,6 @@ class MazeGame(AbstractGame):
 
         pg.display.flip()
 
-    def events(self):
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                self.quit()
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_ESCAPE:
-                    self.quit()
 
     def gg(self):
         self.screen.fill((0,0,0))
