@@ -7,7 +7,7 @@ Created on Fri Jan  4 21:13:10 2019
 
 import pygame as pg
 
-class Player(pg.sprite.Sprite):
+class Player(pg.sprite.Sprite,Setting):
     
     def __init__(self, game, x, y):
   

@@ -8,7 +8,7 @@ Created on Fri Jan  4 21:38:35 2019
 import pygame as pg
 
 
-class Treasure(pg.sprite.Sprite):
+class Treasure(pg.sprite.Sprite,Setting):
     
     def __init__(self, game, x, y, w, h):
  

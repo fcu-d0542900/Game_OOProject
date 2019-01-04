@@ -7,7 +7,7 @@ Created on Fri Jan  4 21:03:40 2019
 
 import pygame as pg
     
-class Wall(pg.sprite.Sprite):
+class Wall(pg.sprite.Sprite,Setting):
     
     def __init__(self, game, x, y, w, h):
         self.groups = game.walls
