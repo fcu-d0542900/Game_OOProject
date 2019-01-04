@@ -2,7 +2,7 @@ import pygame as pg
 vec = pg.math.Vector2
 
 '''參數設定'''
-
+'''
 # game settings
 WIDTH = 64 * 20  
 HEIGHT = 64 * 10 
@@ -11,7 +11,7 @@ TITLE = "物件導向軟體工程專題"
 TILESIZE = 64
 GAMETIME = 60
 #MAP = 'test.tmx'
-MAP = 'RPG.tmx'
+MAP = 'Maze2.tmx'
 
 
 # Player settings
@@ -36,5 +36,26 @@ ZOMBIE_HEALTH = 100
 
 # Treasure
 TREASURE_IMG = 'treasure.png'
+'''
 
+class Setting:
 
+    def __init__(self):	
+		self.WIDTH = 64 * 20  
+		self.HEIGHT = 64 * 10 
+		self.FPS = 60
+		self.TILESIZE = 64
+		self.GAMETIME = 60
+	
+	@abstractmethod
+	def setPlayer(self):
+		pass
+
+	@abstractmethod
+	def setTitle(self):
+		pass
+	
+	@abstractmethod
+	def setTreasure(self):
+		pass
+			
