@@ -11,13 +11,13 @@ class Camera:  #顯示部分地圖
     
     def __init__(self):
         pass
-    
+    '''
     def __init__(self, width, height):
         self.camera = pg.Rect(0, 0, width, height)
         self.width = width
         self.height = height
         self.pos = vec(0,0)
-
+'''
     def setCamera(self, width, height):
         self.camera = pg.Rect(0, 0, width, height)
         self.width = width

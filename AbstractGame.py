@@ -1,14 +1,16 @@
 import pygame as pg
 import sys
 from os import path
-
+from Setting import *
+from TiledMap import *
+from Camera import *
 
 class AbstractGame:
     
     def __init__(self):
         pg.init()
         self.setting = Setting()
-        self.map = Tilemap()
+        self.map = TiledMap()
         self.camera = Camera()
         print(self.setting.WIDTH, self.setting.HEIGHT,self.setting.TITLE)
         self.screen = pg.display.set_mode((self.setting.WIDTH, self.setting.HEIGHT))

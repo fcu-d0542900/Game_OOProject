@@ -6,7 +6,7 @@ Created on Fri Jan  4 21:38:35 2019
 """
 
 import pygame as pg
-from Role import *
+
 
 class Treasure(pg.sprite.Sprite):
     
