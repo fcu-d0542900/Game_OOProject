@@ -4,10 +4,11 @@ from os import path
 from Setting import *
 
 class AbstractGame:
-
-    def __init__(self):
+    
+    def __init__(self,setting):
         pg.init()
-        self.setting = Setting()
+        self.setting = setting
+        print(setting.WIDTH, setting.HEIGHT,setting.TITLE)
         self.screen = pg.display.set_mode((setting.WIDTH, setting.HEIGHT))
         pg.display.set_caption(setting.TITLE)
         self.clock = pg.time.Clock()

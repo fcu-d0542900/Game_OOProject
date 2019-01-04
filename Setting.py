@@ -39,19 +39,19 @@ TREASURE_IMG = 'treasure.png'
 '''
 
 class Setting:
-    
+
     def __init__(self):	
         self.WIDTH = 64 * 20  
         self.HEIGHT = 64 * 10 
         self.FPS = 60
         self.TILESIZE = 64
         self.GAMETIME = 60
+        self.TITLE = ''
     
     def setPlayer(self):
         pass
     
     def setTitle(self):
-        self.TITLE = ''
         pass
     
     def setTreasure(self):
