@@ -1,17 +1,18 @@
 import pygame as pg
 import sys
 from os import path
-from Setting import *
-from Camera import *
+
 
 class AbstractGame:
     
-    def __init__(self,setting,camera,tilemap):
+    def __init__(self):
         pg.init()
-        self.setting = setting
-        print(setting.WIDTH, setting.HEIGHT,setting.TITLE)
-        self.screen = pg.display.set_mode((setting.WIDTH, setting.HEIGHT))
-        pg.display.set_caption(setting.TITLE)
+        self.setting = Setting()
+        self.map = Tilemap()
+        self.camera = Camera()
+        print(self.setting.WIDTH, self.setting.HEIGHT,self.setting.TITLE)
+        self.screen = pg.display.set_mode((self.setting.WIDTH, self.setting.HEIGHT))
+        pg.display.set_caption(self.setting.TITLE)
         self.clock = pg.time.Clock()
         self.load_data()
 		    

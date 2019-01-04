@@ -8,7 +8,16 @@ import pygame as pg
 import pytmx
 
 class TiledMap:  #地圖載入
+    def __init__(self):
+        pass
+    
     def __init__(self, filename):
+        tm = pytmx.load_pygame(filename)
+        self.width = tm.width * tm.tilewidth
+        self.height = tm.height * tm.tileheight
+        self.tmxdata = tm
+        
+    def setFileName(self, filename):
         tm = pytmx.load_pygame(filename)
         self.width = tm.width * tm.tilewidth
         self.height = tm.height * tm.tileheight
