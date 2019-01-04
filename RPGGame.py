@@ -57,7 +57,7 @@ class RPGGame(AbstractGame):
             if time_left <= 0:
                 self.win = False
                 break
-            self.dt = self.clock.tick(FPS) / 1000.0  
+            self.dt = self.clock.tick(self.setting.FPS) / 1000.0  
             self.events()
             self.update()
             self.draw(time_left)
