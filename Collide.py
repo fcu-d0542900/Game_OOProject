@@ -6,8 +6,9 @@ Created on Fri Jan  4 21:17:39 2019
 """
 
 import pygame as pg
+from Setting import *
 
-class Collide:
+class Collide(Setting):
     
     def collide_hit_rect(one, two):
         return one.hit_rect.colliderect(two.rect)
@@ -15,7 +16,7 @@ class Collide:
     def got_hit(self,sprite, group):
         hits = pg.sprite.spritecollide(sprite,group,False,self.collide_hit_rect)
         if hits:
-           sprite.health -= DAMAGE
+           sprite.health -= self.DAMAGE
            if isinstance(hits[0],Bullet):
                hits[0].kill()
            if sprite.health<0 & isinstance(sprite,Player):
