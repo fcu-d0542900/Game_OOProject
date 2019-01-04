@@ -15,6 +15,7 @@ from Structure import *
 class MazeGame(AbstractGame):
     
     def __init__(self):
+        
         AbstractGame.__init__(self)
     
     def load_data(self):  #載入所有圖片
@@ -38,7 +39,6 @@ class MazeGame(AbstractGame):
         self.treasures = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.zombies = pg.sprite.Group()
-        self.bullets = pg.sprite.Group()
         self.camera.setCamera(self.map.width, self.map.height)
 
         for tile_object in self.map.tmxdata.objects:

@@ -122,7 +122,7 @@ class Setting:
         self.FPS = 60
         self.TILESIZE = 64
         self.GAMETIME = 60
-        self.TITLE = 'Maze'
+        self.TITLE = ''
         self.MAP = 'RPG.tmx'
         
         # Player settings
@@ -230,16 +230,11 @@ class Player(pg.sprite.Sprite,Setting):
         self.health = self.PLAYER_HEALTH
         self.last_shot = 0
     
-        
+ 
     def get_mouse(self):
         self.mouse_pos = pg.mouse.get_pos()
-        if pg.mouse.get_pressed()[0]:
-            now = pg.time.get_ticks()
-            if now - self.last_shot > self.BULLET_RATE:
-                self.last_shot = now
-                dir = vec(1, 0).rotate(-self.rot)
-                pos = self.pos + self.BARREL_OFFSET.rotate(-self.rot)
-                Bullet(self.game, pos, dir)
+
+
 
     '''取得按下的按鍵, 並判斷移動方向'''
     def get_keys(self):
@@ -289,6 +284,8 @@ class Player(pg.sprite.Sprite,Setting):
         self.health_bar = pg.Rect(0, 0, width, 7)
         if self.health < self.PLAYER_HEALTH:
             pg.draw.rect(self.image, col, self.health_bar)
+            
+        
             
 class Zombie(pg.sprite.Sprite,Setting):
     
