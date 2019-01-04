@@ -13,6 +13,7 @@ from Player import *
 from Wall import *
 from Treasure import * 
 from random import randint
+from Setting import *
 
 
 class MazeGame(AbstractGame):

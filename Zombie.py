@@ -18,6 +18,7 @@ class Zombie(pg.sprite.Sprite,Setting):
 
         self.groups = game.zombies
         pg.sprite.Sprite.__init__(self, self.groups)
+        Setting.__init__(self)
         self.game = game
         self.image = game.zombie_img
         self.rect = self.image.get_rect()
@@ -38,11 +39,11 @@ class Zombie(pg.sprite.Sprite,Setting):
         move.x, move.y = self.ZOMBIE_SPEED *  move.x / math.sqrt(move.x ** 2 + move.y ** 2), self.ZOMBIE_SPEED * move.y / math.sqrt(move.x ** 2 + move.y ** 2)
         self.pos += move
         self.hit_rect.centerx = self.pos.x
-        COLLIDE.collide(self, self.game.walls, 'x')
+        self.COLLIDE.collide(self, self.game.walls, 'x')
         self.hit_rect.centery = self.pos.y
-        COLLIDE.collide(self, self.game.walls, 'y')
+        self.COLLIDE.collide(self, self.game.walls, 'y')
         self.rect.center = self.hit_rect.center
-        COLLIDE.got_hit(self, self.game.bullets)
+        self.COLLIDE.got_hit(self, self.game.bullets)
         if self.health <= 0:
             x, y = randint(30,1570), randint(30,1570)
             self.rect.center = (x,y)
@@ -57,7 +58,7 @@ class Zombie(pg.sprite.Sprite,Setting):
             col = (0,255,255)
         else:
             col = (255,0,0)
-        width = int(self.rect.width * self.health / ZOMBIE_HEALTH)
+        width = int(self.rect.width * self.health / self.ZOMBIE_HEALTH)
         self.health_bar = pg.Rect(0, 0, width, 7)
         if self.health < self.ZOMBIE_HEALTH:
             pg.draw.rect(self.image, col, self.health_bar)

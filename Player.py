@@ -12,8 +12,8 @@ vec = pg.math.Vector2
 class Player(pg.sprite.Sprite,Setting):
     
     def __init__(self, game, x, y):
-  
         pg.sprite.Sprite.__init__(self)
+        Setting.__init__(self)
         self.game = game
         self.image = game.player_img
         self.rect = self.image.get_rect()
@@ -64,14 +64,14 @@ class Player(pg.sprite.Sprite,Setting):
 
         #鍵盤方向
         self.rect = self.image.get_rect()
-        COLLIDE.collide(self, self.game.treasures, 'x')
-        COLLIDE.collide(self, self.game.treasures, 'y')
+        self.COLLIDE.collide(self, self.game.treasures, 'x')
+        self.COLLIDE.collide(self, self.game.treasures, 'y')
         self.hit_rect.centerx = self.pos.x
-        COLLIDE.collide(self, self.game.walls, 'x')
+        self.COLLIDE.collide(self, self.game.walls, 'x')
         self.hit_rect.centery = self.pos.y
-        COLLIDE.collide(self, self.game.walls, 'y')
+        self.COLLIDE.collide(self, self.game.walls, 'y')
         self.rect.center = self.pos
-        got_hit(self, self.game.zombies)
+        self.COLLIDE.got_hit(self, self.game.zombies)
 
     def draw_health(self):
         if self.health > 800:
