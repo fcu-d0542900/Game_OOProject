@@ -2,21 +2,16 @@ import pygame as pg
 import sys
 from os import path
 from Setting import *
-from sprites import *
-from tilemap import *
-from random import randint
-
-
 
 class AbstractGame:
 
     def __init__(self):
         pg.init()
-        self.screen = pg.display.set_mode((WIDTH, HEIGHT))
-        pg.display.set_caption(TITLE)
+        self.setting = Setting()
+        self.screen = pg.display.set_mode((setting.WIDTH, setting.HEIGHT))
+        pg.display.set_caption(setting.TITLE)
         self.clock = pg.time.Clock()
         self.load_data()
-        self.setting=Setting() 
 		    
     def quit(self):
         pg.quit()
