@@ -28,12 +28,7 @@ class Zombie(pg.sprite.Sprite,Setting):
         self.rot = 0
         self.health = self.ZOMBIE_HEALTH
         self.vel = vec(0, 0)
-<<<<<<< HEAD
-        self.acc = vec(0, 0)
-               
-=======
         self.acc = vec(0, 0)  
->>>>>>> f65af568d822eebc8d6b5f685c3874c0f7556356
         
     def update(self):
         self.rot = (self.game.player.pos - self.pos).angle_to(vec(1, 0))
