@@ -2,10 +2,11 @@ import pygame as pg
 import sys
 from os import path
 from Setting import *
+from Camera import *
 
 class AbstractGame:
     
-    def __init__(self,setting):
+    def __init__(self,setting,camera,tilemap):
         pg.init()
         self.setting = setting
         print(setting.WIDTH, setting.HEIGHT,setting.TITLE)

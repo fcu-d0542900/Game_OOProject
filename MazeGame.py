@@ -9,41 +9,39 @@ import pygame as pg
 import sys
 from os import path
 from AbstractGame import * 
+from Setting import *
 from random import randint
 
 
 class MazeGame(AbstractGame):
 
+    def __init__(self):
+        AbstractGame.__init__(self,Setting())
+    
     def load_data(self):  #載入所有圖片
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'img')
-        self.map = TiledMap(MAP)  #地圖
+        self.map = TiledMap(self.setting.MAP)  #地圖
         self.map_img = self.map.make_map()
         self.map_rect = self.map_img.get_rect()
-        self.player_img = pg.image.load(path.join(img_folder, PLAYER_IMG)).convert_alpha()
-        self.treasure_img = pg.image.load(path.join(img_folder, TREASURE_IMG)).convert_alpha()
-        self.bullet_img = pg.image.load(path.join(img_folder, BULLET_IMG)).convert_alpha()
-        self.zombie_img = pg.image.load(path.join(img_folder, ZOMBIE_IMG)).convert_alpha()
+        self.player_img = pg.image.load(path.join(img_folder, self.setting.PLAYER_IMG)).convert_alpha()
+        self.treasure_img = pg.image.load(path.join(img_folder, self.setting.TREASURE_IMG)).convert_alpha()
 
     def new(self):  #角色初始位置
         self.win = True
         self.treasures = pg.sprite.Group()
         self.walls = pg.sprite.Group()
-        self.bullets = pg.sprite.Group()
-        self.zombies = pg.sprite.Group()
 
         for tile_object in self.map.tmxdata.objects:
             if tile_object.name == 'player':
                 print(tile_object.x, tile_object.y)
                 self.player = Player(self, tile_object.x, tile_object.y)
             if tile_object.name == 'wall':
-                Wall(self, tile_object.x, tile_object.y,
-                         tile_object.width, tile_object.height)
+                Wall(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
             if tile_object.name == 'treasure':
                 #x, y = randint(30,1570), randint(30,1570)
                 self.treasure = Treasure(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
-            if tile_object.name == 'zombie':
-                Zombie(self,tile_object.x, tile_object.y)
+
         self.camera = Camera(self.map.width, self.map.height)
 
     def run(self):  #時間
