@@ -6,6 +6,7 @@ Created on Fri Jan  4 21:26:59 2019
 """
 
 import pygame as pg
+from Setting import *
 
 class Bullet(pg.sprite.Sprite,Setting):
     
@@ -18,8 +19,8 @@ class Bullet(pg.sprite.Sprite,Setting):
         self.rect = self.image.get_rect()
         self.pos = vec(pos)
         self.rect.center = pos
-        spread = uniform(-GUN_SPREAD, GUN_SPREAD)
-        self.vel = dir.rotate(spread) * BULLET_SPEED
+        spread = uniform(-self.GUN_SPREAD, self.GUN_SPREAD)
+        self.vel = dir.rotate(spread) * self.BULLET_SPEED
         self.spawn_time = pg.time.get_ticks()
         
         

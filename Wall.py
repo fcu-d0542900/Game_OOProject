@@ -20,5 +20,3 @@ class Wall(pg.sprite.Sprite,Setting):
         self.rect.x = x
         self.rect.y = y
         
-    def op(self):
-        pass

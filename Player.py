@@ -6,6 +6,7 @@ Created on Fri Jan  4 21:13:10 2019
 """
 
 import pygame as pg
+from Setting import *
 
 class Player(pg.sprite.Sprite,Setting):
     
@@ -16,27 +17,23 @@ class Player(pg.sprite.Sprite,Setting):
         self.image = game.player_img
         self.rect = self.image.get_rect()
         self.rect.center = (x,y)
-        self.hit_rect = PLAYER_HIT_RECT
+        self.hit_rect = self.PLAYER_HIT_RECT
         self.hit_rect.center = self.rect.center
         self.pos = vec(x, y)
         self.vel = vec(0,0)
         self.rot = 0
-        self.health = PLAYER_HEALTH
+        self.health = self.PLAYER_HEALTH
         self.last_shot = 0
     
-    def op(self):
-        super.op()
-        update()
-
         
     def get_mouse(self):
         self.mouse_pos = pg.mouse.get_pos()
         if pg.mouse.get_pressed()[0]:
             now = pg.time.get_ticks()
-            if now - self.last_shot > BULLET_RATE:
+            if now - self.last_shot > self.BULLET_RATE:
                 self.last_shot = now
                 dir = vec(1, 0).rotate(-self.rot)
-                pos = self.pos + BARREL_OFFSET.rotate(-self.rot)
+                pos = self.pos + self.BARREL_OFFSET.rotate(-self.rot)
                 Bullet(self.game, pos, dir)
 
     '''取得按下的按鍵, 並判斷移動方向'''
@@ -82,7 +79,7 @@ class Player(pg.sprite.Sprite,Setting):
             col = (0,255,255)
         else:
             col = (255,0,0)
-        width = int(self.rect.width * self.health / PLAYER_HEALTH)
+        width = int(self.rect.width * self.health / self.PLAYER_HEALTH)
         self.health_bar = pg.Rect(0, 0, width, 7)
-        if self.health < PLAYER_HEALTH:
+        if self.health < self.PLAYER_HEALTH:
             pg.draw.rect(self.image, col, self.health_bar)

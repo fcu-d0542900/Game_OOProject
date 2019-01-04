@@ -22,9 +22,6 @@ class Treasure(pg.sprite.Sprite,Setting):
         self.vel = vec(0,0)
         self.rect.center = vec(x,y)
         
-    def op(self):
-        super.op()
-        update()
 
     def update(self):
         self.image = pg.transform.rotate(self.game.treasure_img, 0)
