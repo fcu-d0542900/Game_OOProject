@@ -20,6 +20,7 @@ def got_hit(sprite, group):
            sprite.game.playing = False
 
 def collide(sprite, group, dir):
+    #檢查x方向的碰撞
     if dir == 'x':
         hits = pg.sprite.spritecollide(sprite, group, False, collide_hit_rect)
         if hits:

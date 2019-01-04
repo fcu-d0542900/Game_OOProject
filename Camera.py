@@ -4,8 +4,11 @@ Created on Fri Jan  4 20:58:04 2019
 
 @author: YURU
 """
+import pygame as pg
+vec = pg.math.Vector2
 
 class Camera:  #顯示部分地圖
+    
     def __init__(self, width, height):
         self.camera = pg.Rect(0, 0, width, height)
         self.width = width
