@@ -20,11 +20,18 @@ class MazeGame(AbstractGame):
     def load_data(self):  #載入所有圖片
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'img')
+        self.setMaze()
         self.map.setFileName(self.setting.MAP)  #地圖
         self.map_img = self.map.make_map()
         self.map_rect = self.map_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, self.setting.PLAYER_IMG)).convert_alpha()
         self.treasure_img = pg.image.load(path.join(img_folder, self.setting.TREASURE_IMG)).convert_alpha()
+    
+    def setMaze(self):
+        self.setting.MAP='Maze2.tmx' 
+        self.setting.TITLE = 'Maze Game'
+        self.setting.PLAYER_IMG = 'ghost.png'
+        self.ZOMBIE_IMG = 'ghost.png'
 
     def new(self):  #角色初始位置
         self.win = True
