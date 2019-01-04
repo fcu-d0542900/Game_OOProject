@@ -17,7 +17,7 @@ if __name__ == '__main__':  #遊戲執行
         g = RPGGame()
     while True:
         g.new()  #遊戲初始
-        pg.mixer.music.load('music/faded.mp3')
+        pg.mixer.music.load('music/Old MacDonald.mp3')
         pg.mixer.music.play(0)
         g.run()  #遊戲運作
         pg.mixer.music.stop()
