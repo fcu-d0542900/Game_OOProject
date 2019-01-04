@@ -27,6 +27,15 @@ class AbstractGame:
     def quit(self):
         pg.quit()
         sys.exit()
+        
+    def events(self):
+        for event in pg.event.get():
+            print(event)
+            if event.type == pg.QUIT:
+                self.quit()
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_ESCAPE:
+                    self.quit()
 
     def load_data(self):  #載入所有圖片
         pass
