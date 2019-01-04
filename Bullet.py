@@ -16,6 +16,7 @@ class Bullet(pg.sprite.Sprite,Setting):
         
         self.groups = game.bullets
         pg.sprite.Sprite.__init__(self, self.groups)
+        Setting.__init__(self)
         self.game = game
         self.image = game.bullet_img
         self.rect = self.image.get_rect()

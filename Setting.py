@@ -42,6 +42,7 @@ class Setting:
         # Treasure
         self.TREASURE_IMG = 'treasure.png'
     
+    '''
     def setPlayer(self):
         pass
     
@@ -53,4 +54,4 @@ class Setting:
     
     def setTreasure(self):
         pass
-			
+	 '''	

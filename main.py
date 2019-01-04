@@ -5,6 +5,7 @@ from random import randint
 from MazeGame import *
 
 
+
 if __name__ == '__main__':  #遊戲執行
     g = MazeGame()
     while True:

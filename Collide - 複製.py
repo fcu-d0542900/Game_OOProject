@@ -7,15 +7,14 @@ Created on Fri Jan  4 21:17:39 2019
 
 import pygame as pg
 from Setting import *
-from Treasure import *
 
 class Collide(pg.sprite.Sprite):
-    '''
+         
     def collide_hit_rect(one, two):
         return one.hit_rect.colliderect(two.rect)
-    '''
+    
     def got_hit(self,sprite, group):
-        hits = pg.sprite.spritecollide(sprite,group,False)
+        hits = pg.sprite.spritecollide(sprite,group,False,self.collide_hit_rect)
         if hits:
            sprite.health -= self.DAMAGE
            if isinstance(hits[0],Bullet):
@@ -27,7 +26,7 @@ class Collide(pg.sprite.Sprite):
     def collide(self,sprite, group, dir):
         #檢查x方向的碰撞
         if dir == 'x':
-            hits = pg.sprite.spritecollide(sprite, group, False)
+            hits = pg.sprite.spritecollide(sprite, group, False, self.collide_hit_rect)
             if hits:
                 if hits[0].rect.centerx > sprite.hit_rect.centerx:
                     sprite.pos.x = hits[0].rect.left - sprite.hit_rect.width / 2
@@ -40,7 +39,7 @@ class Collide(pg.sprite.Sprite):
                     sprite.game.playing = False
         #檢查y方向的碰撞
         if dir == 'y':
-            hits = pg.sprite.spritecollide(sprite, group, False)
+            hits = pg.sprite.spritecollide(sprite, group, False, self.collide_hit_rect)
             if hits:
                 if hits[0].rect.centery > sprite.hit_rect.centery:
                     sprite.pos.y = hits[0].rect.top - sprite.hit_rect.height / 2
