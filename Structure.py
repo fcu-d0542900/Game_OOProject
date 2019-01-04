@@ -9,6 +9,7 @@ import pygame as pg
 import pytmx
 import sys
 import math
+from random import uniform,randint
 vec = pg.math.Vector2
 
 class AbstractGame:
@@ -57,13 +58,7 @@ class AbstractGame:
 class TiledMap:  #地圖載入
     def __init__(self):
         pass
-    '''
-    def __init__(self, filename):
-        tm = pytmx.load_pygame(filename)
-        self.width = tm.width * tm.tilewidth
-        self.height = tm.height * tm.tileheight
-        self.tmxdata = tm
-    '''   
+    
     def setFileName(self, filename):
         tm = pytmx.load_pygame(filename)
         self.width = tm.width * tm.tilewidth
@@ -90,13 +85,6 @@ class Camera:  #顯示部分地圖
     def __init__(self):
         self.setting = Setting()
         
-    '''
-    def __init__(self, width, height):
-        self.camera = pg.Rect(0, 0, width, height)
-        self.width = width
-        self.height = height
-        self.pos = vec(0,0)
-    '''
     def setCamera(self, width, height):
         self.camera = pg.Rect(0, 0, width, height)
         self.width = width
@@ -126,7 +114,7 @@ class Camera:  #顯示部分地圖
 class Setting:
 
     def __init__(self):	
-        self.COLLIDE = Collide()
+        self.COLLIDE = None
         
         # game settings
         self.WIDTH = 64 * 20  
@@ -161,7 +149,10 @@ class Setting:
         self.TREASURE_IMG = 'treasure.png'
         
     
-    '''
+    def hasCollide(self):
+        if self.COLLIDE == None :
+            self.COLLIDE = Collide()
+    
     def setPlayer(self):
         pass
     
@@ -173,12 +164,15 @@ class Setting:
     
     def setTreasure(self):
         pass
-	 '''	
+
 
 def collide_hit_rect(one, two):
     return one.hit_rect.colliderect(two.rect)
 
-class Collide(pg.sprite.Sprite):
+class Collide(pg.sprite.Sprite,Setting):
+    
+    def __init__(self):
+        Setting.__init__(self)
 
     def got_hit(self,sprite, group):
         hits = pg.sprite.spritecollide(sprite,group,False,collide_hit_rect)
@@ -274,6 +268,7 @@ class Player(pg.sprite.Sprite,Setting):
 
         #鍵盤方向
         self.rect = self.image.get_rect()
+        self.hasCollide()
         self.COLLIDE.collide(self, self.game.treasures, 'x')
         self.COLLIDE.collide(self, self.game.treasures, 'y')
         self.hit_rect.centerx = self.pos.x
@@ -322,6 +317,7 @@ class Zombie(pg.sprite.Sprite,Setting):
         move.x, move.y = self.ZOMBIE_SPEED *  move.x / math.sqrt(move.x ** 2 + move.y ** 2), self.ZOMBIE_SPEED * move.y / math.sqrt(move.x ** 2 + move.y ** 2)
         self.pos += move
         self.hit_rect.centerx = self.pos.x
+        self.hasCollide()
         self.COLLIDE.collide(self, self.game.walls, 'x')
         self.hit_rect.centery = self.pos.y
         self.COLLIDE.collide(self, self.game.walls, 'y')
@@ -388,6 +384,7 @@ class Treasure(pg.sprite.Sprite,Setting):
     def update(self):
         self.image = pg.transform.rotate(self.game.treasure_img, 0)
         self.rect = self.image.get_rect()
+        self.hasCollide()
         self.COLLIDE.collide(self, self.game.walls, 'x')
         self.COLLIDE.collide(self, self.game.walls, 'y')
         self.rect.center = self.pos
