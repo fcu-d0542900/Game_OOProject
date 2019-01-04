@@ -7,6 +7,8 @@ Created on Fri Jan  4 21:26:59 2019
 
 import pygame as pg
 from Setting import *
+vec = pg.math.Vector2
+from random import uniform
 
 class Bullet(pg.sprite.Sprite,Setting):
     

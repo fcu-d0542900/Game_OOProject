@@ -7,6 +7,7 @@ Created on Fri Jan  4 21:13:10 2019
 
 import pygame as pg
 from Setting import *
+vec = pg.math.Vector2
 
 class Player(pg.sprite.Sprite,Setting):
     
@@ -63,12 +64,12 @@ class Player(pg.sprite.Sprite,Setting):
 
         #鍵盤方向
         self.rect = self.image.get_rect()
-        collide(self, self.game.treasures, 'x')
-        collide(self, self.game.treasures, 'y')
+        COLLIDE.collide(self, self.game.treasures, 'x')
+        COLLIDE.collide(self, self.game.treasures, 'y')
         self.hit_rect.centerx = self.pos.x
-        collide(self, self.game.walls, 'x')
+        COLLIDE.collide(self, self.game.walls, 'x')
         self.hit_rect.centery = self.pos.y
-        collide(self, self.game.walls, 'y')
+        COLLIDE.collide(self, self.game.walls, 'y')
         self.rect.center = self.pos
         got_hit(self, self.game.zombies)
 

@@ -6,7 +6,7 @@ Created on Fri Jan  4 21:38:35 2019
 """
 
 import pygame as pg
-
+vec = pg.math.Vector2
 
 class Treasure(pg.sprite.Sprite,Setting):
     
@@ -26,8 +26,8 @@ class Treasure(pg.sprite.Sprite,Setting):
     def update(self):
         self.image = pg.transform.rotate(self.game.treasure_img, 0)
         self.rect = self.image.get_rect()
-        collide(self, self.game.walls, 'x')
-        collide(self, self.game.walls, 'y')
+        COLLIDE.collide(self, self.game.walls, 'x')
+        COLLIDE.collide(self, self.game.walls, 'y')
         self.rect.center = self.pos
 
 
