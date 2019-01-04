@@ -18,6 +18,7 @@ class RPGGame(AbstractGame):
     def load_data(self):  #載入所有圖片
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'img')
+        self.setRpg()
         self.map.setFileName(self.setting.MAP)  #地圖
         self.map_img = self.map.make_map()
         self.map_rect = self.map_img.get_rect()
@@ -26,6 +27,14 @@ class RPGGame(AbstractGame):
         self.bullet_img = pg.image.load(path.join(img_folder, self.setting.BULLET_IMG)).convert_alpha()
         self.zombie_img = pg.image.load(path.join(img_folder, self.setting.ZOMBIE_IMG)).convert_alpha()
 
+    def setRpg(self):
+        self.setting.MAP='RPG.tmx' 
+        self.setting.TITLE = 'RPG Game'
+        self.setting.PLAYER_IMG = 'cyclops.png'
+        self.setting.ZOMBIE_IMG = 'dragon.png'
+        self.setting.TREASURE_IMG = 'treasure.png'
+        self.setting.BULLET_IMG = 'bullet.png'
+        
     def new(self):  #角色初始位置
         self.win = True
         self.treasures = pg.sprite.Group()
