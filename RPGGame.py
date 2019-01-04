@@ -6,7 +6,6 @@ Created on Sat Jan  5 03:58:38 2019
 """
 
 import pygame as pg
-import sys
 from os import path
 from random import randint
 from Structure import *
@@ -107,14 +106,6 @@ class RPGGame(AbstractGame):
         self.screen.blit(textsurface,(1000 ,self.setting.HEIGHT/10))
 
         pg.display.flip()
-
-    def events(self):
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                self.quit()
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_ESCAPE:
-                    self.quit()
 
     def gg(self):
         self.screen.fill((0,0,0))

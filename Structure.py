@@ -28,8 +28,6 @@ class AbstractGame:
     def quit(self):
         pg.quit()
         sys.exit()
-    
-        
         
     def events(self):
         for event in pg.event.get():
@@ -133,7 +131,7 @@ class Setting:
         
         # Weapon settings
         self.BARREL_OFFSET = vec(30, 10)
-        self.BULLET_IMG = 'bullet.png'
+        self.BULLET_IMG = 'nobullet.png'
         self.BULLET_SPEED = 1000
         self.BULLET_RATE = 150
         self.GUN_SPREAD = 5
@@ -321,11 +319,11 @@ class Zombie(pg.sprite.Sprite,Setting):
         self.rect.center = self.hit_rect.center
         self.COLLIDE.got_hit(self, self.game.bullets)
         if self.health <= 0:
-            x, y = randint(30,1570), randint(30,1570)
-            self.rect.center = (x,y)
-            self.pos = vec(x, y)
-            self.health = self.ZOMBIE_HEALTH
-            #self.kill()
+            #x, y = randint(30,1570), randint(30,1570)
+            #self.rect.center = (x,y)
+            #self.pos = vec(x, y)
+            #self.health = self.ZOMBIE_HEALTH
+            self.kill()
     
     def draw_health(self):
         if self.health > 60:
