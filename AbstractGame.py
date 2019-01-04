@@ -16,31 +16,24 @@ class AbstractGame:
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         self.load_data()
-		self.setting=Setting() 
+        self.setting=Setting() 
 		    
     def quit(self):
         pg.quit()
         sys.exit()
 
-    @abstractmethod
     def load_data(self):  #載入所有圖片
         pass
 
-    @abstractmethod
     def new(self):  #角色初始位置
         pass
 
-    @abstractmethod
     def run(self):  #時間
         pass
 
-    @abstractmethod
     def update(self):  #更新角色
         pass
-        
-	
-        
-    @abstractmethod
+    
     def gg(self):
         pass
 
