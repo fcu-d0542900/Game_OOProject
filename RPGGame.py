@@ -19,6 +19,7 @@ class RPGGame(AbstractGame):
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'img')
         self.setRpg()
+        pg.display.set_caption(self.setting.TITLE)
         self.map.setFileName(self.setting.MAP)  #地圖
         self.map_img = self.map.make_map()
         self.map_rect = self.map_img.get_rect()
