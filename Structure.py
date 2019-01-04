@@ -249,7 +249,7 @@ class Player(pg.sprite.Sprite,Setting):
         
         #角色面朝著滑鼠方向
         self.rot = self.get_angle() * 180 / math.pi 
-        #self.image = pg.transform.rotate(self.game.player_img, self.rot)
+        self.image = pg.transform.rotate(self.game.player_img, self.rot)
 
         #鍵盤方向
         self.rect = self.image.get_rect()
