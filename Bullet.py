@@ -7,10 +7,10 @@ Created on Fri Jan  4 21:26:59 2019
 
 import pygame as pg
 
-class Bullet(pg.sprite.Sprite,Role):
+class Bullet(pg.sprite.Sprite):
     
-    def __init__(self, game, pos, dir,c):
-        Role.__init__(self,c)
+    def __init__(self, game, pos, dir,Component):
+        
         self.groups = game.bullets
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game

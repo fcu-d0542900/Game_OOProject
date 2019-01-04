@@ -7,9 +7,10 @@ Created on Fri Jan  4 21:13:10 2019
 
 import pygame as pg
 
-class Player(pg.sprite.Sprite,Role):
-    def __init__(self, game, x, y,c):
-        Role.__init__(self,c)
+class Player(pg.sprite.Sprite,Component):
+    
+    def __init__(self, game, x, y):
+  
         pg.sprite.Sprite.__init__(self)
         self.game = game
         self.image = game.player_img

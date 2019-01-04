@@ -8,10 +8,10 @@ Created on Fri Jan  4 21:38:35 2019
 import pygame as pg
 from Role import *
 
-class Treasure(pg.sprite.Sprite,Role):
+class Treasure(pg.sprite.Sprite,Component):
     
-    def __init__(self, game, x, y, w, h,c):
-        Role.__init__(self,c)
+    def __init__(self, game, x, y, w, h):
+ 
         self.groups = game.treasures
         pg.sprite.Sprite.__init__(self, self.groups)
         self.image = game.treasure_img

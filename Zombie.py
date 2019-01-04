@@ -7,10 +7,10 @@ Created on Fri Jan  4 21:15:33 2019
 
 import pygame as pg
 
-class Zombie(pg.sprite.Sprite,Role):
+class Zombie(pg.sprite.Sprite):
     
-    def __init__(self, game, x, y,c):
-        Role.__init__(self,c)
+    def __init__(self, game, x, y,Component):
+
         self.groups = game.zombies
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
