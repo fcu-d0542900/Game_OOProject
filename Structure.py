@@ -152,18 +152,6 @@ class Setting:
     def hasCollide(self):
         if self.COLLIDE == None :
             self.COLLIDE = Collide()
-    
-    def setPlayer(self):
-        pass
-    
-    def setTitle(self):
-        pass
-    
-    def setMap(self):
-        pass
-    
-    def setTreasure(self):
-        pass
 
 
 def collide_hit_rect(one, two):
