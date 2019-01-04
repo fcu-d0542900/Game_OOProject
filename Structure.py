@@ -28,6 +28,8 @@ class AbstractGame:
     def quit(self):
         pg.quit()
         sys.exit()
+    
+        
         
     def events(self):
         for event in pg.event.get():
@@ -145,6 +147,7 @@ class Setting:
         
         # Treasure
         self.TREASURE_IMG = 'treasure.png'
+        
     
     def hasCollide(self):
         if self.COLLIDE == None :
