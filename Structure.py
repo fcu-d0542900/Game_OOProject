@@ -49,6 +49,9 @@ class AbstractGame:
     def update(self):  #更新角色
         pass
     
+    def draw(self, time_left):
+        pass
+    
     def gg(self):
         pass
     
