@@ -14,7 +14,6 @@ from Structure import *
 class MazeGame(AbstractGame):
     
     def __init__(self):
-        
         AbstractGame.__init__(self)
     
     def load_data(self):  #載入所有圖片
